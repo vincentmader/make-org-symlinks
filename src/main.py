@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from termcolor import colored
+
 import utils
 from config import IS_VERBOSE
 from config import PATH_TO_ALL
@@ -12,8 +14,10 @@ def remove_currently_present_symlinks():
     for path in paths:
         os.unlink(path) # Note: This is assured to always be a symlink!
         if IS_VERBOSE:
-            print(f"Removed symbolic link at \"{path}\".")
-    print(f"Removed {len(paths)} symbolic links from \"{PATH_TO_ALL}\".")
+            text = f"Removed symbolic link at \"{path}\"."
+            print(colored(text, "red"))
+    text = f"Removed {len(paths)} symbolic links from \"{PATH_TO_ALL}\"."
+    print(colored(text, "red"))
 
 
 def create_links_for_org_category_directories():
@@ -22,7 +26,8 @@ def create_links_for_org_category_directories():
     for path in paths:
         create_links_for_org_category_directory(path)
     symlinks = utils.paths_to_symlinks_in_all_directory()
-    print(f"Created {len(symlinks)} symbolic links at \"{PATH_TO_ALL}\".")
+    text = f"Created {len(symlinks)} symbolic links at \"{PATH_TO_ALL}\"."
+    print(colored(text, "green"))
 
 
 def create_links_for_org_category_directory(category: Path):
@@ -33,7 +38,8 @@ def create_links_for_org_category_directory(category: Path):
         target = Path(PATH_TO_ALL, project_title)
         os.symlink(path, target)
         if IS_VERBOSE:
-            print(f"Created symbolic link at \"{target}\".")
+            text = f"Created symbolic link at \"{target}\"."
+            print(colored(text, "green"))
 
 
 if __name__ == "__main__":
