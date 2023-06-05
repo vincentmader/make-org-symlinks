@@ -1,2 +1,4 @@
 links:
-	cd src && python3 main.py
+	cd bin && ./run.sh
+setup:
+	cd bin && ./setup.sh
