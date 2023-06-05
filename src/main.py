@@ -43,7 +43,5 @@ def create_links_for_org_category_directory(category: Path):
 
 
 if __name__ == "__main__":
-    print()
     remove_currently_present_symlinks()
-    print()
     create_links_for_org_category_directories()
