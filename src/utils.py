@@ -10,8 +10,9 @@ def paths_to_org_category_directories():
     # Get list of entries in org directory, then sort the list.
     entries = os.listdir(PATH_TO_ORG)
     entries = sorted(entries)
+    # entries = [e for e in entries if e not in ["A_all"]]
     # Remove all entries which do not start with a numeric character.
-    entries = [e for e in entries if e[0].isnumeric()]
+    # entries = [e for e in entries if e[0].isnumeric()]
     # Convert entries from filename strings to `Pathlib.Path` instances.
     entries = [Path(PATH_TO_ORG, e) for e in entries]
     # Remove all entries which are not directories.
